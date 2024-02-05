@@ -9,7 +9,7 @@ Note : Make sure that you have angular cli installed in your system to use this 
 
 2. Run `npm install`. This will install all the dependencies 
 
-3. Run the json-server using `json-server src/app/db.json``. This will run the json-server. You can see it in `http://localhost:3000/Student`
+3. Run the json-server using `json-server src/app/db.json`. This will run the json-server. You can see it in `http://localhost:3000/Student`
 
 4. Run the application using `ng serve` 
 
