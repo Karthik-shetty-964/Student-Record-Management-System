@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## To install this project in your pc
 Note : Make sure that you have angular cli installed in your system to use this application
 
-1. Clone this repository by using `git clone https://github.com/Karthik-shetty-964/Student-Record-Management-System.git``
+1. Clone this repository by using `git clone https://github.com/Karthik-shetty-964/Student-Record-Management-System.git`
 
 2. Run `npm install`. This will install all the dependencies 
 
