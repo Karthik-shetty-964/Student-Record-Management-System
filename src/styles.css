@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600&display=swap');
+
+body {
+    background: #151935;
+    font-family: 'Open Sans', sans-serif;
+    color : white;
+}
+
+input.ng-touched.ng-valid {
+    border : 2px solid green;
+}
+
+input.ng-touched.ng-invalid {
+    border : 2px solid red;
+}
+
+.error {
+    color : red;
+    font-weight: bold;
+}

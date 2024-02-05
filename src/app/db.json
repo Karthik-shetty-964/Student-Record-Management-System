@@ -1,0 +1,67 @@
+{
+  "Student": [
+    {
+      "id": "3",
+      "studentName": "Kaushik Shetty",
+      "age": 18,
+      "course": "B.E",
+      "location": "Udupi",
+      "email": "kaushik@gmail.com",
+      "password": "kaushik123"
+    },
+    {
+      "id": "4",
+      "studentName": "Keerthan",
+      "age": 22,
+      "course": "BBA",
+      "location": "Pune",
+      "email": "keerthan@gmail.com",
+      "password": "keerthan123"
+    },
+    {
+      "id": "5",
+      "studentName": "Muneez",
+      "age": 23,
+      "course": "BBA",
+      "location": "Dubai",
+      "email": "muneez@gmail.com",
+      "password": "muneez123"
+    },
+    {
+      "id": "6",
+      "studentName": "Siddiq",
+      "age": 23,
+      "course": "BBA",
+      "location": "Udupi",
+      "email": "siddiq@gmail.com",
+      "password": "siddiq123"
+    },
+    {
+      "id": "7",
+      "studentName": "Prathiksha",
+      "age": 20,
+      "course": "B.E",
+      "location": "Bantakal",
+      "email": "prathiksha@gmail.com",
+      "password": "prathiksha123"
+    },
+    {
+      "id": "8",
+      "studentName": "Karthik Shetty",
+      "age": 21,
+      "course": "B.E",
+      "location": "Udupi",
+      "email": "karthik@gmail.com",
+      "password": "karthik1234"
+    },
+    {
+      "id": "9",
+      "studentName": "Apeksha",
+      "age": 21,
+      "course": "B.E",
+      "location": "Surathkal",
+      "email": "apeksha@gmail.com",
+      "password": "apeksha123"
+    }
+  ]
+}

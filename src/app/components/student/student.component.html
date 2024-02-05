@@ -1,0 +1,152 @@
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card col-8 mb-3 p-3">
+        <div class="row g-0">
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <img src="../../../assets/images.png" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center justify-content-between">
+                        <h1>
+                            {{student.studentName}}
+                        </h1>
+                        <!-- Button trigger modal -->
+                        <div class="btns d-flex gap-2">
+                            <button type="button" class="btn btn-info px-4 py-2 fw-bolder" data-bs-toggle="modal"
+                                data-bs-target="#editStudentModal">
+                                Edit
+                            </button>
+                            <input type="button" *ngIf="isLogout" (click)="logout()" class="btn btn-danger" value="Logout" />
+                            <input type="button" *ngIf="isGoBack" (click)="goBack()" class="btn btn-danger" value="Back" />
+                        </div>
+                    </h5>
+                    <hr />
+                    <div class="displayData">
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Student Id</span>
+                            <input type="text" class="form-control" value="{{student.id}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Student Name</span>
+                            <input type="text" class="form-control" value="{{student.studentName}}"
+                                aria-label="Username" aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Age</span>
+                            <input type="text" class="form-control" value="{{student.age}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Course</span>
+                            <input type="text" class="form-control" value="{{student.course}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Location</span>
+                            <input type="text" class="form-control" value="{{student.location}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Email</span>
+                            <input type="text" class="form-control" value="{{student.email}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Password</span>
+                            <input type="text" class="form-control" value="{{student.password}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                    </div>
+
+
+                    <span class="text-success d-flex justify-content-center fs-5 fw-bolder mt-3"
+                        *ngIf="message!=''  ">{{message}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal to Edit the user content -->
+    <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content editModal">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data</h1>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form #loginForm="ngForm" (ngSubmit)="editUserData()">
+                        <div class="mb-4">
+                            <label for="studentId" class="mb-1">Id: <span class="studId text-secondary">(Id is
+                                    auto generated)</span></label>
+                            <input type="number" id="studentId" [(ngModel)]="student.id" #studId="ngModel"
+                                name="studentId" class="form-control" disabled />
+                        </div>
+                        <div class="mb-4">
+                            <label for="studentName" class="mb-1">Student Name:</label>
+                            <input type="text" id="studentName" [(ngModel)]="student.studentName" #studName="ngModel"
+                                name="studentName" class="form-control" required />
+                            <span class="error" *ngIf="studName.invalid && studName.touched">Student name cannot
+                                be empty</span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="age" class="mb-1">Age:</label>
+                            <input type="number" id="age" [(ngModel)]="student.age" #studAge="ngModel" name="studentAge"
+                                class="form-control" required />
+                            <span class="error" *ngIf="studAge.invalid && studAge.touched">Student age cannot be
+                                empty</span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="course" class="mb-1">Course:</label>
+                            <select id="course" class="form-control" name="studentCourse" [(ngModel)]="student.course"
+                                #studCourse="ngModel" required>
+                                <option value="" disabled>Select an option</option>
+                                <option value="B.Pharma">B.Pharma</option>
+                                <option value="B.E">B.E</option>
+                                <option value="BBA">BBA</option>
+                                <option value="MBA">MBA</option>
+                            </select>
+                            <span class="error" *ngIf="studCourse.invalid && studCourse.touched">Student course
+                                cannot be empty</span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="location" class="mb-1">Location:</label>
+                            <input type="text" id="location" [(ngModel)]="student.location" #studLocation="ngModel"
+                                name="studentLocation" class="form-control" required />
+                            <span class="error" *ngIf="studLocation.invalid && studLocation.touched">Student
+                                location cannot be empty</span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="studentEmail" class="mb-1">Student Email:</label>
+                            <input type="email" id="studentEmail" [(ngModel)]="student.email" #studEmail="ngModel"
+                                name="studentEmail" class="form-control"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
+                            <span class="error"
+                                *ngIf="studEmail.invalid && studEmail.touched && studEmail.value===''">Student
+                                email cannot be empty</span>
+                            <span class="error"
+                                *ngIf="studEmail.invalid && studEmail.touched && studEmail.value!=='' ">Enter
+                                valid email id</span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="mb-1">Password:</label>
+                            <input type="password" id="password" [(ngModel)]="student.password" #studPassword="ngModel"
+                                name="studentPassword" class="form-control" required />
+                            <span class="error" *ngIf="studPassword.touched && studPassword.invalid">Password
+                                cannot be empty</span>
+                        </div>
+
+                        <div class="d-flex gap-3 modal-footer">
+                            <input type="submit" value="Save" class="btn btn-success" [disabled]="loginForm.invalid"
+                                data-bs-dismiss="modal" />
+                            <input type="button" value="Close" class="btn btn-secondary" data-bs-dismiss="modal" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

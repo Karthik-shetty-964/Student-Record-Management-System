@@ -1,0 +1,28 @@
+.studId {
+    font-size: smaller;
+}
+table {
+    border-radius: 20px;
+}
+.card{
+    background-color : #d1e7dd;
+    color : #151935;
+}
+.card h1{
+    font-weight: 600;
+}
+.addModal {
+    background-color: #151935;
+    color:white;
+    max-width: 600px;
+}
+.modal-dialog{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.addBtn {
+    background-color: #151935;
+    color : white;
+}
+

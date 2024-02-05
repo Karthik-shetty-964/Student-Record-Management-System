@@ -1,0 +1,145 @@
+<div class="container mt-3">
+    <div class="card">
+        <div class="d-flex justify-content-center align-items-center mt-3 fw-bolder">
+            <h1>Student Record Management System</h1>
+        </div>
+        <hr class="m-0" />
+        <!-- Button trigger modal -->
+        <div class="btns d-flex justify-content-between align-items-center me-5">
+            <button type="button" class="btn addBtn col-2 m-2 py-2 " data-bs-toggle="modal"
+                data-bs-target="#addStudentModal">
+                Add Student
+            </button>
+            <input type="button" routerLink="" class="btn btn-danger" value="Logout" />
+        </div>
+        <hr class="m-0" />
+        <div class="card-body p-0">
+            <table class="table table-success table-striped table-hover text-center m-0">
+                <thead>
+                    <tr>
+                        <th>Student Id</th>
+                        <th>Student Name</th>
+                        <th>Age</th>
+                        <th>Course</th>
+                        <th>Location</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let student of students">
+                        <td>{{student.id}}</td>
+                        <td>{{student.studentName}}</td>
+                        <td>{{student.age}}</td>
+                        <td>{{student.course}}</td>
+                        <td>{{student.location}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.password}}</td>
+                        <td>
+                            <input type="button" value=" View " (click)="getStudent(student.id)"
+                                class="btn btn-info me-2" />
+                            <input type="button" value="Delete" (click)="deleteStudentData(student.id)"
+                                class="btn btn-danger" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <span class="text-success d-flex justify-content-center fs-5 fw-bolder"
+                *ngIf="message!=''  ">{{message}}</span>
+
+
+            <!-- Modal to add the user content -->
+            <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content addModal">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Student</h1>
+                            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form #loginForm="ngForm" (ngSubmit)="addStudentData()">
+                                <div class="mb-4">
+                                    <label for="studentId" class="mb-1">Id: <span class="studId text-secondary">(Id is
+                                            auto generated)</span></label>
+                                    <input type="text" id="studentId" [(ngModel)]="studentId" #studId="ngModel"
+                                        name="studentId" class="form-control" disabled />
+                                </div>
+                                <div class="mb-4">
+                                    <label for="studentName" class="mb-1">Student Name:</label>
+                                    <input type="text" id="studentName" [(ngModel)]="student.studentName"
+                                        #studName="ngModel" name="studentName" class="form-control"
+                                        placeholder="Enter student name" required />
+                                    <span class="error" *ngIf="studName.invalid && studName.touched">Student name cannot
+                                        be empty</span>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="age" class="mb-1">Age:</label>
+                                    <input type="number" id="age" [(ngModel)]="student.age" #studAge="ngModel"
+                                        name="studentAge" class="form-control" required />
+                                    <span class="error" *ngIf="studAge.invalid && studAge.touched">Student age cannot be
+                                        empty</span>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="course" class="mb-1">Course:</label>
+                                    <select id="course" class="form-control" name="studentCourse"
+                                        [(ngModel)]="student.course" #studCourse="ngModel" required>
+                                        <option value="" disabled>Select an option</option>
+                                        <option value="B.Pharma">B.Pharma</option>
+                                        <option value="B.E">B.E</option>
+                                        <option value="BBA">BBA</option>
+                                        <option value="MBA">MBA</option>
+                                    </select>
+                                    <span class="error" *ngIf="studCourse.invalid && studCourse.touched">Student course
+                                        cannot be empty</span>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="location" class="mb-1">Location:</label>
+                                    <input type="text" id="location" [(ngModel)]="student.location"
+                                        #studLocation="ngModel" name="studentLocation" class="form-control"
+                                        placeholder="Enter student location" required />
+                                    <span class="error" *ngIf="studLocation.invalid && studLocation.touched">Student
+                                        location cannot be empty</span>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="studentEmail" class="mb-1">Student Email:</label>
+                                    <input type="email" id="studentEmail" [(ngModel)]="student.email"
+                                        #studEmail="ngModel" name="studentEmail" class="form-control"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                        placeholder="Enter student email id" required />
+                                    <span class="error"
+                                        *ngIf="studEmail.invalid && studEmail.touched && studEmail.value===''">Student
+                                        email cannot be empty</span>
+                                    <span class="error"
+                                        *ngIf="studEmail.invalid && studEmail.touched && studEmail.value!=='' ">Enter
+                                        valid email id</span>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="password" class="mb-1">Password:</label>
+                                    <input type="password" id="password" [(ngModel)]="student.password"
+                                        #studPassword="ngModel" name="studentPassword" class="form-control"
+                                        minlength="8" placeholder="Enter student password" required />
+                                    <span class="error"
+                                        *ngIf="studPassword.touched && studPassword.invalid && studPassword.value===''">Password
+                                        cannot be empty</span>
+                                    <span class="error"
+                                        *ngIf="studPassword.touched && studPassword.invalid && studPassword.value!==''">Password
+                                        must have 8 characters</span>
+                                </div>
+
+                                <div class="d-flex gap-3 modal-footer">
+                                    <input type="submit" value="Add Student" class="btn btn-success"
+                                        [disabled]="loginForm.invalid" data-bs-dismiss="modal" />
+                                    <input type="button" value="Close" class="btn btn-danger" data-bs-dismiss="modal" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
